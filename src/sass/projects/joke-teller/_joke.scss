@@ -1,0 +1,60 @@
+.container-robot {
+  position: relative;
+  height: 20vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  position: fixed;
+  z-index: 100;
+  bottom: 0;
+  right: 0;
+
+  #button-robot {
+    position: absolute;
+    left: -55;
+    top: 0;
+    cursor: pointer;
+    white-space: nowrap;
+    height: 7vh;
+    align-items: center;
+    outline: none;
+    font-family: Courier, monospace;
+    font-size: 16px;
+    color: white;
+    background: grey;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 2px 2px 20px 7px rgba(0, 0, 0, 0.4);
+    transition: transform 0.2s, filter 0.2s;
+
+    &:hover {
+      filter: brightness(93%);
+    }
+
+    &:active {
+      transform: scale(0.98);
+    }
+
+    &:disabled {
+      cursor: default;
+      filter: brightness(30%);
+    }
+  }
+
+  #audio-robot {
+    margin-right: 10px;
+  }
+  img {
+    max-width: 100%;
+  }
+
+  /* media query: tablet or smaller */
+  @media screen and (max-width: 1000px) {
+    background-size: cover;
+    background-position: center center;
+
+    #button-robot {
+      box-shadow: 5px 5px 30px 7px rgba(0, 0, 0, 0.6);
+    }
+  }
+}
