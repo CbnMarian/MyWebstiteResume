@@ -8,6 +8,13 @@
     <title>Ciobanu Marian | Developer</title>
     <link
       rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
     <link rel="stylesheet" href="styles.scss" />
@@ -15,7 +22,7 @@
       defer
       src="https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js"
     ></script>
-
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
   </head>
 
@@ -36,13 +43,13 @@
             >Know more</a
           >
         </p>
-      </section>
-      <div class="container-robot">
-        <button id="button-robot">Hear a JOKE?</button>
-        <audio id="audio" controls hidden></audio>
-        <img src="/src/assets/robot1.gif" />
+        <div data-aos="fade-left" class=" container-robot">
+          <button id="button-robot">Hear a JOKE?</button>
+          <audio id="audio" controls hidden></audio>
+          <img src="/src/assets/robot1.gif" />
+        </div>
       </div>
-    </div>
+    </section>
 
     <!-- **** My presentation **** -->
     <section id="about">
@@ -88,162 +95,280 @@
     </section>
     <!-- /END About Section -->
 
-    <!-- **** Projects Section 1 **** -->
-    <section id="projects">
-      <div class="container">
-        <div class="project-wrapper">
-          <h2 class="section-title dark-blue-text">Projects</h2>
+   <!-- **** Projects Section 1 **** -->
+   <section id="projects">
+    <div class="container">
+      <div class="project-wrapper">
+        <h2 class="section-title dark-blue-text">Projects</h2>
 
-          <!-- start of the  project -->
-          <div class="row">
-            <div class="col-lg-4 col-sm-12">
-              <div class="project-wrapper__text load-hidden">
-                <h3 class="project-wrapper__text-title">Comedian Robot</h3>
-                <div>
-                  <p class="mb-4">
-                    An interactive web application that tells jokes using text-to-speech technology.
-                  </br>
-                    The components used are: HTML, CSS, JavaScript, VoiceRSS API, Joke API
-                  </br>
-                  By clicking "Hear a Joke?" button. We are passing the jokes to the <a href="https://www.voicerss.org/">VoiceRSS API </a>  Playing the generated audio using <a href="https://www.voicerss.org/api/">text-to-speech</a>.
+        <!--  project 1 -->
+        <div class="row">
+          <div class="col-lg-4 col-sm-12">
+            <div class="project-wrapper__text load-hidden">
+              <h3 class="project-wrapper__text-title">Comedian Robot</h3>
+              <div>
+                <p class="mb-4">
+                  An interactive web application that tells jokes using text-to-speech technology.
                 </br>
-                  You can see him waving at you in the right-bottom of the page. 
-                  </p>
-                </div>
-                <a
-                  rel="noreferrer"
-                  target="_blank"
-                  class="cta-btn cta-btn--hero"
-                  href="#!"
-                >
-                  See Live
-                </a>
-                <a
-                  rel="noreferrer"
-                  target="_blank"
-                  class="cta-btn text-color-main"
-                  href="#!"
-                >
-                  Source Code
-                </a>
+                  The components used are: HTML, CSS, JavaScript, VoiceRSS API, Joke API
+                </br>
+                By clicking "Hear a Joke?" button. We are passing the jokes to the <a href="https://www.voicerss.org/">VoiceRSS API </a>  Playing the generated audio using <a href="https://www.voicerss.org/api/">text-to-speech</a>.
+              </br>
+                You can see him waving at you in the right-bottom of the page. 
+                </p>
               </div>
-            </div>
-           
-          </div>
-          <!-- /END Project -->
-
-          <!-- start of the  project -->
-          <div class="row">
-            <div class="col-lg-4 col-sm-12">
-              <div class="project-wrapper__text load-hidden">
-                <h3 class="project-wrapper__text-title">Project Title 1</h3>
-                <div>
-                  <p class="mb-4">
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                    Excepturi neque, ipsa animi maiores repellendus distinctio
-                    aperiam earum dolor voluptatum consequatur blanditiis
-                    inventore debitis fuga numquam voluptate ex architecto
-                    itaque molestiae.
-                  </p>
-                </div>
-                <a
-                  rel="noreferrer"
-                  target="_blank"
-                  class="cta-btn cta-btn--hero"
-                  href="#!"
-                >
-                  See Live
-                </a>
-                <a
-                  rel="noreferrer"
-                  target="_blank"
-                  class="cta-btn text-color-main"
-                  href="#!"
-                >
-                  Source Code
-                </a>
-              </div>
-            </div>
-            <div class="col-lg-8 col-sm-12">
-              <div class="project-wrapper__image load-hidden">
-                <a rel="noreferrer" href="#!" target="_blank">
-                  <div
-                    data-tilt
-                    data-tilt-max="4"
-                    data-tilt-glare="true"
-                    data-tilt-max-glare="0.5"
-                    class="thumbnail rounded js-tilt"
-                  >
-                    <img
-                      alt="Project Image"
-                      class="img-fluid"
-                      src="assets/project.jpg"
-                    />
-                  </div>
-                </a>
-              </div>
+              <a
+                rel="noreferrer"
+                target="_blank"
+                class="cta-btn cta-btn--hero"
+                href="https://robocomediancbm.netlify.app"
+              >
+                See Live
+              </a>
+              <a
+                rel="noreferrer"
+                target="_blank"
+                class="cta-btn text-color-main"
+                href="https://github.com/CbnMarian/JSprojects/tree/main/4.joke%20teller"
+              >
+                Source Code GitHub
+              </a>
             </div>
           </div>
-          <!-- /END Project -->
-
-          <!-- start of the  project -->
-          <div class="row">
-            <div class="col-lg-4 col-sm-12">
-              <div class="project-wrapper__text load-hidden">
-                <h3 class="project-wrapper__text-title">Project Title 2</h3>
-                <div>
-                  <p class="mb-4">
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                    Excepturi neque, ipsa animi maiores repellendus distinctio
-                    aperiam earum dolor voluptatum consequatur blanditiis
-                    inventore debitis fuga numquam voluptate ex architecto
-                    itaque molestiae.
-                  </p>
+          <div class="col-lg-8 col-sm-12">
+            <div class="project-wrapper__image load-hidden">
+              <a rel="noreferrer" href="https://robocomediancbm.netlify.app" target="_blank">
+                <div
+                  data-tilt
+                  data-tilt-max="4"
+                  data-tilt-glare="true"
+                  data-tilt-max-glare="0.5"
+                  class="thumbnail rounded js-tilt"
+                >
+                  <img
+                    alt="Project Image"
+                    class="img-fluid"
+                    src="assets/project1.png"
+                  />
                 </div>
-                <a
-                  rel="noreferrer"
-                  target="_blank"
-                  class="cta-btn cta-btn--hero"
-                  href="#!"
-                >
-                  See Live
-                </a>
-                <a
-                  rel="noreferrer"
-                  target="_blank"
-                  class="cta-btn text-color-main"
-                  href="#!"
-                >
-                  Source Code
-                </a>
-              </div>
-            </div>
-            <div class="col-lg-8 col-sm-12">
-              <div class="project-wrapper__image load-hidden">
-                <a rel="noreferrer" href="#!" target="_blank">
-                  <div
-                    data-tilt
-                    data-tilt-max="4"
-                    data-tilt-glare="true"
-                    data-tilt-max-glare="0.5"
-                    class="thumbnail rounded js-tilt"
-                  >
-                    <img
-                      alt="Project Image"
-                      class="img-fluid"
-                      src="assets/project.jpg"
-                    />
-                  </div>
-                </a>
-              </div>
+              </a>
             </div>
           </div>
-          <!-- /END Project -->
         </div>
-      </div>
-    </section>
-    <!-- /END Projects Section -->
+        <!-- /END Project 1 -->
 
+        <!--  project 2-->
+        <div class="row">
+          <div class="col-lg-4 col-sm-12">
+            <div class="project-wrapper__text load-hidden">
+              <h3 class="project-wrapper__text-title">Quote GENERATOR</h3>
+              <div>
+                <p class="mb-4">
+                  &nbsp;&nbsp;The "Quote Generator" is a web application that fetches and displays random quotes from an external API. Users can load new quotes and share them on Twitter. The project employs JavaScript for API requests, provides an interactive user experience, and enhances visuals with CSS and Font Awesome icons. 
+                </p>
+              </div>
+              <a
+                rel="noreferrer"
+                target="_blank"
+                class="cta-btn cta-btn--hero"
+                href="https://quote-generator-cbm.netlify.app"
+              >
+                See Live
+              </a>
+              <a
+                rel="noreferrer"
+                target="_blank"
+                class="cta-btn text-color-main"
+                href="https://github.com/CbnMarian/JSprojects/tree/main/h.c.js%20quote-generator"
+              >
+                Source Code GitHub
+              </a>
+            </div>
+          </div>
+          <div class="col-lg-8 col-sm-12">
+            <div class="project-wrapper__image load-hidden">
+              <div class="quote-container" id="quote-container">
+                <!-- quote -->
+                <div class="quote-text">
+                  <i class="fas fa-quote-left"></i>
+                  <span id="quote"
+                    > 
+                  </span>
+                  <i class="fas fa-quote-left"></i>
+                </div>
+                <!-- Authorr -->
+                <div class="quote-author">
+                  <span id="author"> </span>
+                </div>
+                <!-- Buttons -->
+                <div class="button-container">
+                  <button class="twitter-button" id="twitter" title="Tweet This!">
+                    <i class="fab fa-twitter"></i>
+                    <button id="new-quote">New Quote</button>
+                </div>
+          
+              </div>
+              <!-- loader -->
+              <div class="loader" id="loader"></div>
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- /END Project 2-->
+
+        <!--  project 3-->
+        <div class="row">
+          <div class="col-lg-4 col-sm-12">
+            <div class="project-wrapper__text load-hidden">
+              <h3 class="project-wrapper__text-title">Infinity Photo Gallery</h3>
+              <div>
+                <p class="mb-4">
+                  &nbsp;&nbsp;The Photo Gallery it's a web page that fetches random images from <a href="https://unsplash.com/">Unsplash API </a> and displays them with infinite scrolling. <br> 
+                  &nbsp;&nbsp;The displayPhotos function creates and appends links and images to the image container for each photo retrieved from the Unsplash API.<br>
+                  it listens for the scroll event, and when the user approaches the bottom of the page, it triggers the loading of more photos by calling getPhotos.
+                </p>
+              </div>
+              <a
+                rel="noreferrer"
+                target="_blank"
+                class="cta-btn cta-btn--hero"
+                href="https://infinitegallerycbm.netlify.app"
+              >
+                See Live
+              </a>
+              <a
+                rel="noreferrer"
+                target="_blank"
+                class="cta-btn text-color-main"
+                href="https://github.com/CbnMarian/JSprojects/tree/main/infinityscroll"
+              >
+                Source Code GitHub
+              </a>
+            </div>
+          </div>
+          <div class="col-lg-8 col-sm-12">
+            <div class="project-wrapper__image load-hidden">
+              <a rel="noreferrer" href="https://infinitegallerycbm.netlify.app" target="_blank">
+                <div
+                  data-tilt
+                  data-tilt-max="4"
+                  data-tilt-glare="true"
+                  data-tilt-max-glare="0.5"
+                  class="thumbnail rounded js-tilt"
+                >
+                  <img
+                    alt="Project Image"
+                    class="img-fluid"
+                    src="assets/project3.png"
+                  />
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- /END Project 3 -->
+         <!--  project 4-->
+         <div class="row">
+          <div class="col-lg-4 col-sm-12">
+            <div class="project-wrapper__text load-hidden">
+              <h3 class="project-wrapper__text-title">PopUp Share Screen</h3>
+              <div>
+                <p class="mb-4">
+                  &nbsp;&nbsp;The <a href="https://css-tricks.com/an-introduction-to-the-picture-in-picture-web-api/">"Picture in Picture"</a> project is a web application that enables users to select a media stream, such as a screen share or webcam feed, and display it in a picture-in-picture mode. The project employs JavaScript and the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Screen_Capture_API/Using_Screen_Capture">Media Capture and Streams API</a> to facilitate screen sharing. Users can start and stop picture-in-picture mode by clicking the "START" button. The project enhances user interactivity, creating a versatile tool for various screen-sharing scenarios.
+                </p>
+              </div>
+              <a
+                rel="noreferrer"
+                target="_blank"
+                class="cta-btn cta-btn--hero"
+                href="https://picture-in-picture-cbm.netlify.app"
+              >
+                See Live
+              </a>
+              <a
+                rel="noreferrer"
+                target="_blank"
+                class="cta-btn text-color-main"
+                href="https://github.com/CbnMarian/JSprojects/tree/main/3.window%20opener"
+              >
+                Source Code GitHub
+              </a>
+            </div>
+          </div>
+          <div class="col-lg-8 col-sm-12">
+            <div class="project-wrapper__image load-hidden">
+              <a rel="noreferrer" href="https://picture-in-picture-cbm.netlify.app" target="_blank">
+                <div
+                  data-tilt
+                  data-tilt-max="4"
+                  data-tilt-glare="true"
+                  data-tilt-max-glare="0.5"
+                  class="thumbnail rounded js-tilt"
+                >
+                  <img
+                    alt="Project Image"
+                    class="img-fluid"
+                    src="assets/project4.png"
+                  />
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- /END Project 4 -->
+         <!--  project 5-->
+         <div class="row">
+          <div class="col-lg-4 col-sm-12">
+            <div class="project-wrapper__text load-hidden">
+              <h3 class="project-wrapper__text-title">Music Player</h3>
+              <div>
+                <p class="mb-4">
+                  &nbsp;&nbsp;A simple web-based music player created using HTML, CSS, and JavaScript. It lets users play songs, control playback, and displays album art, song title, artist, and a progress bar.
+                </p>
+              </div>
+              <a
+                rel="noreferrer"
+                target="_blank"
+                class="cta-btn cta-btn--hero"
+                href="https://music-player-cbm.netlify.app"
+              >
+                See Live
+              </a>
+              <a
+                rel="noreferrer"
+                target="_blank"
+                class="cta-btn text-color-main"
+                href="https://github.com/CbnMarian/JSprojects/tree/main/8.music%20player"
+              >
+                Source Code GitHub
+              </a>
+            </div>
+          </div>
+          <div class="col-lg-8 col-sm-12">
+            <div class="project-wrapper__image load-hidden">
+              <a rel="noreferrer" href="https://music-player-cbm.netlify.app" target="_blank">
+                <div
+                  data-tilt
+                  data-tilt-max="4"
+                  data-tilt-glare="true"
+                  data-tilt-max-glare="0.5"
+                  class="thumbnail rounded js-tilt"
+                >
+                  <img
+                    alt="Project Image"
+                    class="img-fluid"
+                    src="assets/project5.png"
+                  />
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- /END Project 5 -->
+      </div>
+    </div>
+  </section>
+  <!-- /END Projects Section -->
     <!-- **** Contact Section **** -->
     <section id="contact">
       <div class="container">
@@ -300,9 +425,22 @@
     </footer>
     <!-- /END Footer Section -->
 
+
+    <!-- script files -->
+    <script  src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init({
+        delay:3000,
+        duration:3000,
+        once:false,
+        mirror:false
+      });
+    </script>
+
     <script defer type="module" src="index.js"></script>
     <script src="./scripts/projects/joke-robot/voice.js"></script>
     <script src="./scripts/projects/joke-robot/joke-teller.js"></script>
+    <script src="./scripts/projects/quote generator/quote-generaotr.js"></script>
      
   </body>
 </html>
