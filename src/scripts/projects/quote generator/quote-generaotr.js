@@ -44,7 +44,7 @@ function newQuote() {
   quoteText.textContent = quote.text;
   complete();
 }
-/* 
+
 async function getQuotes() {
   loading();
   const apiUrl = "https://jacintodesign.github.io/quotes-api/data/quotes.json";
@@ -69,4 +69,3 @@ twitterBtn.addEventListener("click", tweetQuote);
 getQuotes();
 
 loading();
- */
