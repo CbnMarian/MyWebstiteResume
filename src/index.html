@@ -58,6 +58,13 @@
         <div class="row about-wrapper">
           <div class="col-md-6 col-sm-12">
             <div class="about-wrapper__image load-hidden">
+              <div
+                  data-tilt
+                  data-tilt-max="4"
+                  data-tilt-glare="true"
+                  data-tilt-max-glare="0.5"
+                  class="thumbnail rounded js-tilt"
+                >
               <img
                 alt="Profile Image"
                 class="img-fluid rounded shadow-lg"
@@ -65,7 +72,7 @@
                 width="300px"
                 src="assets/profilePHOTO.png"
                 alt="Profile Image"
-              />
+              /></div>
             </div>
           </div>
           <div class="col-md-6 col-sm-12">
@@ -83,7 +90,7 @@
                   rel="noreferrer"
                   target="_blank"
                   class="cta-btn cta-btn--resume"
-                  href="assets/Marian's Resume.pdf"
+                  href="assets/Marian's resume.pdf"
                 >
                   View Resume !
                 </a>
@@ -346,21 +353,31 @@
           </div>
           <div class="col-lg-8 col-sm-12">
             <div class="project-wrapper__image load-hidden">
-              <a rel="noreferrer" href="https://music-player-cbm.netlify.app" target="_blank">
-                <div
-                  data-tilt
-                  data-tilt-max="4"
-                  data-tilt-glare="true"
-                  data-tilt-max-glare="0.5"
-                  class="thumbnail rounded js-tilt"
-                >
-                  <img
-                    alt="Project Image"
-                    class="img-fluid"
-                    src="assets/project5.png"
-                  />
+              
+                 
+                <div class="player-container">
+                  <!-- Song -->
+                  <div class="img-container">
+                    <img class="song-img-player" src="/src/assets/img-music-player/jacinto-1.jpg" alt="Album art" />
+                  </div>
+                  <h2 id="title">Electric Chill Machine</h2>
+                  <h3 id="artist">Jacinto</h3>
+                  <audio class="song-player" src="/src/music/jacinto-1.mp3"></audio>
+                  <!-- progress container -->
+                  <div class="progress-container" id="progress-container">
+                    <div class="progress" id="progress"></div>
+                    <div class="duration-wrapper">
+                      <span id="current-time">0.00</span>
+                      <span id="duration">2:06</span>
+                    </div>
+                  </div>
+                  <!-- controls -->
+                  <div class="player-controls">
+                    <i class="fas fa-backward" id="prev" title="Previous"></i>
+                    <i class="fas fa-play" id="play" title="Play"></i>
+                    <i class="fas fa-forward" id="next" title="Next"></i>
+                  </div>
                 </div>
-              </a>
             </div>
           </div>
         </div>
@@ -441,6 +458,7 @@
     <script src="./scripts/projects/joke-robot/voice.js"></script>
     <script src="./scripts/projects/joke-robot/joke-teller.js"></script>
     <script src="./scripts/projects/quote generator/quote-generaotr.js"></script>
+    <script src="./scripts/projects/music-player/music-player.js"></script>
      
   </body>
 </html>
