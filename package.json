@@ -7,12 +7,13 @@
   "scripts": {
     "start": "parcel",
     "build": "parcel build",
-    "gh-pages-build": "parcel build --public-url ."
+    "gh-pages-build": "parcel build --public-url .",
+    "clean": "rm -rf dist/*" 
   },
   "devDependencies": {
     "@parcel/transformer-sass": "^2.7.0",
     "parcel": "^2.7.0",
-    "prettier": "^2.7.1"
+    "prettier": "^3.1.0"
   },
   "dependencies": {
     "@popperjs/core": "^2.11.6",
