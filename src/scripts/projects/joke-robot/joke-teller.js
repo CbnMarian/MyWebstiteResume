@@ -1,4 +1,5 @@
-/* const button = document.getElementById("button-robot");
+// joke-teller.js
+const button = document.getElementById("button-robot");
 const audioElement = document.getElementById("audio-robot");
 
 //disable/enable button
@@ -17,6 +18,7 @@ function tellMe(joke) {
     c: "mp3",
     f: "44khz_16bit_stereo",
     ssml: false,
+    audioElement: audioElement, // pass audioElement as a parameter
   });
 }
 
@@ -46,7 +48,5 @@ async function getJokes() {
 }
 
 // Event listeners
-
 button.addEventListener("click", getJokes);
 audioElement.addEventListener("ended", toggleButton);
- */
