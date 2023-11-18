@@ -1,4 +1,3 @@
-"use strict";
 const button = document.getElementById("button-robot");
 const audioElement = document.getElementById("audio-robot");
 
