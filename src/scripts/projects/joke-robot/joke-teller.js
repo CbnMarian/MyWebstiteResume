@@ -49,5 +49,3 @@ async function getJokes() {
 
 button.addEventListener("click", getJokes);
 audioElement.addEventListener("ended", toggleButton);
-
-// apearence

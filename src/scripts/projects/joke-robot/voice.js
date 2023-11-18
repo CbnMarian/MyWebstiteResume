@@ -1,5 +1,5 @@
 // VoiceRSS Javascript SDK
-"use strict";
+
 //
 const VoiceRSS = {
   speech: function (e) {
@@ -45,7 +45,7 @@ const VoiceRSS = {
       t.open("POST", "https://api.voicerss.org/", !0),
       t.setRequestHeader(
         "Content-Type",
-        "application/x-www-form-urlencoded; charset=UTF-8"
+        "application/x-www-form-urlencoded; charset=UTF-8",
       ),
       t.send(a);
   },
@@ -74,14 +74,14 @@ const VoiceRSS = {
     return e.canPlayType("audio/mpeg").replace("no", "")
       ? "mp3"
       : e.canPlayType("audio/wav").replace("no", "")
-      ? "wav"
-      : e.canPlayType("audio/aac").replace("no", "")
-      ? "aac"
-      : e.canPlayType("audio/ogg").replace("no", "")
-      ? "ogg"
-      : e.canPlayType("audio/x-caf").replace("no", "")
-      ? "caf"
-      : "";
+        ? "wav"
+        : e.canPlayType("audio/aac").replace("no", "")
+          ? "aac"
+          : e.canPlayType("audio/ogg").replace("no", "")
+            ? "ogg"
+            : e.canPlayType("audio/x-caf").replace("no", "")
+              ? "caf"
+              : "";
   },
   _getXHR: function () {
     try {
