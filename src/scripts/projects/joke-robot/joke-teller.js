@@ -2,12 +2,12 @@
 const button = document.getElementById("button-robot");
 const audioElement = document.getElementById("audio-robot");
 
-//disable/enable button
+// disable/enable button
 function toggleButton() {
   button.disabled = !button.disabled;
 }
 
-//passing the jokes to voice api
+// passing the jokes to voice api
 function tellMe(joke) {
   const jokeString = joke.trim().replace(/ /g, "%20");
   VoiceRSS.speech({
@@ -18,7 +18,7 @@ function tellMe(joke) {
     c: "mp3",
     f: "44khz_16bit_stereo",
     ssml: false,
-    audioElement: audioElement, // pass audioElement as a parameter
+    audioElement: audioElement, // pass audioElement to voice.js
   });
 }
 
@@ -38,9 +38,9 @@ async function getJokes() {
     } else {
       joke = data.joke;
     }
-    //text-to-speech
+    // text-to-speech
     tellMe(joke);
-    //disable button
+    // disable button
     toggleButton();
   } catch (err) {
     console.log("whoops!", err);
