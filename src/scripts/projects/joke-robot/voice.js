@@ -1,80 +1,90 @@
 const VoiceRSS = {
-  speech: function (e) {
-    this._validate(e), this._request(e);
+  speech: function (settings) {
+    this._validate(settings);
+    this._request(settings);
   },
-  _validate: function (e) {
-    if (!e) throw "The settings are undefined";
-    if (!e.key) throw "The API key is undefined";
-    if (!e.src) throw "The text is undefined";
-    if (!e.hl) throw "The language is undefined";
-    if (e.c && "auto" != e.c.toLowerCase()) {
-      var a = !1;
-      switch (e.c.toLowerCase()) {
+  _validate: function (settings) {
+    if (!settings) throw "The settings are undefined";
+    if (!settings.key) throw "The API key is undefined";
+    if (!settings.src) throw "The text is undefined";
+    if (!settings.hl) throw "The language is undefined";
+    if (settings.c && "auto" != settings.c.toLowerCase()) {
+      var audioSupport = false;
+      switch (settings.c.toLowerCase()) {
         case "mp3":
-          a = new Audio().canPlayType("audio/mpeg").replace("no", "");
+          audioSupport = new Audio()
+            .canPlayType("audio/mpeg")
+            .replace("no", "");
           break;
         case "wav":
-          a = new Audio().canPlayType("audio/wav").replace("no", "");
+          audioSupport = new Audio().canPlayType("audio/wav").replace("no", "");
           break;
         case "aac":
-          a = new Audio().canPlayType("audio/aac").replace("no", "");
+          audioSupport = new Audio().canPlayType("audio/aac").replace("no", "");
           break;
         case "ogg":
-          a = new Audio().canPlayType("audio/ogg").replace("no", "");
+          audioSupport = new Audio().canPlayType("audio/ogg").replace("no", "");
           break;
         case "caf":
-          a = new Audio().canPlayType("audio/x-caf").replace("no", "");
+          audioSupport = new Audio()
+            .canPlayType("audio/x-caf")
+            .replace("no", "");
       }
-      if (!a) throw "The browser does not support the audio codec " + e.c;
+      if (!audioSupport)
+        throw "The browser does not support the audio codec " + settings.c;
     }
   },
-  _request: function (e) {
-    var a = this._buildRequest(e),
-      t1 = this._getXHR();
-    (t1.onreadystatechange = function () {
-      if (4 == t1.readyState && 200 == t1.status) {
-        if (0 == t1.responseText.indexOf("ERROR")) throw t1.responseText;
-        (audioElement.src = t1.responseText), audioElement.play();
+  _request: function (settings) {
+    var request = this._buildRequest(settings);
+    var xhr = this._getXHR();
+    xhr.onreadystatechange = function () {
+      if (4 == xhr.readyState && 200 == xhr.status) {
+        if (0 == xhr.responseText.indexOf("ERROR")) throw xhr.responseText;
+        audioElement.src = xhr.responseText;
+        audioElement.play();
       }
-    }),
-      t1.open("POST", "https://api.voicerss.org/", !0),
-      t1.setRequestHeader(
-        "Content-Type",
-        "application/x-www-form-urlencoded; charset=UTF-8",
-      ),
-      t1.send(a);
+    };
+    xhr.open("POST", "https://api.voicerss.org/", true);
+    xhr.setRequestHeader(
+      "Content-Type",
+      "application/x-www-form-urlencoded; charset=UTF-8",
+    );
+    xhr.send(request);
   },
-  _buildRequest: function (e) {
-    var a = e.c && "auto" != e.c.toLowerCase() ? e.c : this._detectCodec();
+  _buildRequest: function (settings) {
+    var codec =
+      settings.c && "auto" != settings.c.toLowerCase()
+        ? settings.c
+        : this._detectCodec();
     return (
       "key=" +
-      (e.key || "") +
+      (settings.key || "") +
       "&src=" +
-      (e.src || "") +
+      (settings.src || "") +
       "&hl=" +
-      (e.hl || "") +
+      (settings.hl || "") +
       "&r=" +
-      (e.r || "") +
+      (settings.r || "") +
       "&c=" +
-      (a || "") +
+      (codec || "") +
       "&f=" +
-      (e.f || "") +
+      (settings.f || "") +
       "&ssml=" +
-      (e.ssml || "") +
+      (settings.ssml || "") +
       "&b64=true"
     );
   },
   _detectCodec: function () {
-    var e = new Audio();
-    return e.canPlayType("audio/mpeg").replace("no", "")
+    var audio = new Audio();
+    return audio.canPlayType("audio/mpeg").replace("no", "")
       ? "mp3"
-      : e.canPlayType("audio/wav").replace("no", "")
+      : audio.canPlayType("audio/wav").replace("no", "")
         ? "wav"
-        : e.canPlayType("audio/aac").replace("no", "")
+        : audio.canPlayType("audio/aac").replace("no", "")
           ? "aac"
-          : e.canPlayType("audio/ogg").replace("no", "")
+          : audio.canPlayType("audio/ogg").replace("no", "")
             ? "ogg"
-            : e.canPlayType("audio/x-caf").replace("no", "")
+            : audio.canPlayType("audio/x-caf").replace("no", "")
               ? "caf"
               : "";
   },
@@ -149,6 +159,5 @@ async function getJokes() {
 }
 
 // Event listeners
-
 button.addEventListener("click", getJokes);
 audioElement.addEventListener("ended", toggleButton);
