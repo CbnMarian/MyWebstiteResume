@@ -1,3 +1,4 @@
+//
 const VoiceRSS = {
   speech: function (e) {
     this._validate(e), this._request(e);
@@ -34,13 +35,15 @@ const VoiceRSS = {
     (t.onreadystatechange = function () {
       if (4 == t.readyState && 200 == t.status) {
         if (0 == t.responseText.indexOf("ERROR")) throw t.responseText;
+
+        //new audio(t.respoinseText).play()
         (audioElement.src = t.responseText), audioElement.play();
       }
     }),
       t.open("POST", "https://api.voicerss.org/", !0),
       t.setRequestHeader(
         "Content-Type",
-        "application/x-www-form-urlencoded; charset=UTF-8",
+        "application/x-www-form-urlencoded; charset=UTF-8"
       ),
       t.send(a);
   },
@@ -69,14 +72,14 @@ const VoiceRSS = {
     return e.canPlayType("audio/mpeg").replace("no", "")
       ? "mp3"
       : e.canPlayType("audio/wav").replace("no", "")
-        ? "wav"
-        : e.canPlayType("audio/aac").replace("no", "")
-          ? "aac"
-          : e.canPlayType("audio/ogg").replace("no", "")
-            ? "ogg"
-            : e.canPlayType("audio/x-caf").replace("no", "")
-              ? "caf"
-              : "";
+      ? "wav"
+      : e.canPlayType("audio/aac").replace("no", "")
+      ? "aac"
+      : e.canPlayType("audio/ogg").replace("no", "")
+      ? "ogg"
+      : e.canPlayType("audio/x-caf").replace("no", "")
+      ? "caf"
+      : "";
   },
   _getXHR: function () {
     try {
@@ -100,53 +103,3 @@ const VoiceRSS = {
     throw "The browser does not support HTTP request";
   },
 };
-
-const button = document.getElementById("button-robot");
-const audioElement = document.getElementById("audio-robot");
-
-//disable/enable button
-function toggleButton() {
-  button.disabled = !button.disabled;
-}
-
-//passing the jokes to voice api
-function tellMe(joke) {
-  const jokeString = joke.trim().replace(/ /g, "%20");
-  VoiceRSS.speech({
-    key: "e7621aace3b64f588463a898b9c2b3a2",
-    src: jokeString,
-    hl: "en-us",
-    r: 0,
-    c: "mp3",
-    f: "44khz_16bit_stereo",
-    ssml: false,
-  });
-}
-
-// Get jokes from joke API
-async function getJokes() {
-  let joke = "";
-  const apiUrl =
-    "https://v2.jokeapi.dev/joke/Programming?blacklistFlags=nsfw,religious,political,racist,sexist,explicit";
-
-  try {
-    const response = await fetch(apiUrl);
-    const data = await response.json();
-    if (data.setup) {
-      joke = `${data.setup} ... ${data.delivery}`;
-    } else {
-      joke = data.joke;
-    }
-    //text-to-speech
-    tellMe(joke);
-    //disable button
-    toggleButton();
-  } catch (err) {
-    console.log("whoops!", err);
-  }
-}
-
-// Event listeners
-
-button.addEventListener("click", getJokes);
-audioElement.addEventListener("ended", toggleButton);
