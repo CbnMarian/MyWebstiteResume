@@ -30,19 +30,19 @@ const VoiceRSS = {
   },
   _request: function (e) {
     var a = this._buildRequest(e),
-      t = this._getXHR();
-    (t.onreadystatechange = function () {
-      if (4 == t.readyState && 200 == t.status) {
-        if (0 == t.responseText.indexOf("ERROR")) throw t.responseText;
-        (audioElement.src = t.responseText), audioElement.play();
+      t1 = this._getXHR();
+    (t1.onreadystatechange = function () {
+      if (4 == t1.readyState && 200 == t1.status) {
+        if (0 == t1.responseText.indexOf("ERROR")) throw t1.responseText;
+        (audioElement.src = t1.responseText), audioElement.play();
       }
     }),
-      t.open("POST", "https://api.voicerss.org/", !0),
-      t.setRequestHeader(
+      t1.open("POST", "https://api.voicerss.org/", !0),
+      t1.setRequestHeader(
         "Content-Type",
         "application/x-www-form-urlencoded; charset=UTF-8",
       ),
-      t.send(a);
+      t1.send(a);
   },
   _buildRequest: function (e) {
     var a = e.c && "auto" != e.c.toLowerCase() ? e.c : this._detectCodec();
