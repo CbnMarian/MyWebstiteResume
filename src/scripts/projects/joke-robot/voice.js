@@ -80,16 +80,17 @@ const VoiceRSS = {
     var audio = new Audio();
     return audio.canPlayType("audio/mpeg").replace("no", "")
       ? "mp3"
-      : e.canPlayType("audio/wav").replace("no", "")
+      : audio.canPlayType("audio/wav").replace("no", "")
         ? "wav"
-        : e.canPlayType("audio/aac").replace("no", "")
+        : audio.canPlayType("audio/aac").replace("no", "")
           ? "aac"
-          : e.canPlayType("audio/ogg").replace("no", "")
+          : audio.canPlayType("audio/ogg").replace("no", "")
             ? "ogg"
-            : e.canPlayType("audio/x-caf").replace("no", "")
+            : audio.canPlayType("audio/x-caf").replace("no", "")
               ? "caf"
               : "";
   },
+
   _getXHR: function () {
     try {
       return new XMLHttpRequest();
