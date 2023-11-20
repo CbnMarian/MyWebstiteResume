@@ -7,45 +7,43 @@ function toggleButton() {
 }
 
 //passing the jokes to voice api
-function tellMe(joke) {
-  const jokeString = joke.trim().replace(/ /g, "%20");
+const tellJoke = (joke) => {
   VoiceRSS.speech({
     key: "e7621aace3b64f588463a898b9c2b3a2",
-    src: jokeString,
+    src: joke,
     hl: "en-us",
+    v: "Linda",
     r: 0,
     c: "mp3",
     f: "44khz_16bit_stereo",
     ssml: false,
   });
-}
+};
 
-// Get jokes from joke API
+// Get Jokes from JokeAPI
 async function getJokes() {
-  let joke = "";
-  const apiUrl =
-    "https://v2.jokeapi.dev/joke/Programming?blacklistFlags=nsfw,religious,political,racist,sexist,explicit";
-
   try {
-    const response = await fetch(apiUrl);
+    const response = await fetch("https://v2.jokeapi.dev/joke/Any");
     const data = await response.json();
-    console.log(data.joke);
-    if (data.setup) {
-      console.log(data.joke);
-      joke = `${data.setup} ... ${data.delivery}`;
+    if (data.type === "twopart") {
+      // Log the joke setup and delivery separately
+      console.log("Joke Setup:", data.setup);
+      console.log("Joke Delivery:", data.delivery);
+      const joke = `${data.setup} ... ${data.delivery}`;
+      tellJoke(joke);
     } else {
-      joke = data.joke;
+      console.log("Single-part Joke:", data.joke);
+      tellJoke(data.joke);
     }
-    //text-to-speech
-    tellMe(joke);
-    //disable button
-    toggleButton();
-  } catch (err) {
-    console.log("whoops!", err);
+  } catch (error) {
+    console.error("Error fetching jokes:", error.message);
   }
 }
 
-// Event listeners
+// Trigger the function
+document.getElementById("button-robot").addEventListener("click", getJokes);
 
-button.addEventListener("click", getJokes);
-audioElement.addEventListener("ended", toggleButton);
+// New console.log for debugging
+console.log("Jokes.js file loaded successfully!");
+
+// End of jokes.js
