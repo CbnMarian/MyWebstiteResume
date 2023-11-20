@@ -1,4 +1,4 @@
-const button = document.getElementById("button-robot");
+/* const button = document.getElementById("button-robot");
 const audioElement = document.getElementById("audio-robot");
 
 //disable/enable button
@@ -47,3 +47,4 @@ async function getJokes() {
 
 button.addEventListener("click", getJokes);
 audioElement.addEventListener("ended", toggleButton);
+ */
