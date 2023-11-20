@@ -1,4 +1,4 @@
-/* const button = document.getElementById("button-robot");
+const button = document.getElementById("button-robot");
 const audioElement = document.getElementById("audio-robot");
 
 //disable/enable button
@@ -29,7 +29,9 @@ async function getJokes() {
   try {
     const response = await fetch(apiUrl);
     const data = await response.json();
+    console.log(data.joke);
     if (data.setup) {
+      console.log(data.joke);
       joke = `${data.setup} ... ${data.delivery}`;
     } else {
       joke = data.joke;
@@ -47,4 +49,3 @@ async function getJokes() {
 
 button.addEventListener("click", getJokes);
 audioElement.addEventListener("ended", toggleButton);
- */
