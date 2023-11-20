@@ -10,7 +10,7 @@ const VoiceRSS = {
     if (!settings.src) throw "The text is undefined";
     if (!settings.hl) throw "The language is undefined";
     if (settings.c && "auto" != settings.c.toLowerCase()) {
-      var audioSupport = false;
+      let audioSupport = false;
       switch (settings.c.toLowerCase()) {
         case "mp3":
           audioSupport = new Audio()
@@ -36,7 +36,7 @@ const VoiceRSS = {
     }
   },
   _request: function (e) {
-    var a = this._buildRequest(e),
+    let a = this._buildRequest(e),
       t = this._getXHR();
     (t.onreadystatechange = function () {
       if (4 == t.readyState && 200 == t.status) {
@@ -54,7 +54,7 @@ const VoiceRSS = {
       t.send(a);
   },
   _buildRequest: function (settings) {
-    var codec =
+    let codec =
       settings.c && "auto" != settings.c.toLowerCase()
         ? settings.c
         : this._detectCodec();
@@ -77,7 +77,7 @@ const VoiceRSS = {
     );
   },
   _detectCodec: function () {
-    var audio = new Audio();
+    let audio = new Audio();
     return audio.canPlayType("audio/mpeg").replace("no", "")
       ? "mp3"
       : audio.canPlayType("audio/wav").replace("no", "")
