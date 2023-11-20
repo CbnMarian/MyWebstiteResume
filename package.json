@@ -8,7 +8,7 @@
     "start": "parcel",
     "build": "parcel build",
     "gh-pages-build": "parcel build --public-url .",
-    "clean": "rm -rf dist/*" 
+    "clean": "rm -rf dist/*"
   },
   "devDependencies": {
     "@parcel/transformer-sass": "^2.7.0",
