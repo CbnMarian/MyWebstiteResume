@@ -94,22 +94,22 @@ const VoiceRSS = {
   _getXHR: function () {
     try {
       return new XMLHttpRequest();
-    } catch (e) {}
+    } catch (audio) {}
     try {
       return new ActiveXObject("Msxml3.XMLHTTP");
-    } catch (e) {}
+    } catch (audio) {}
     try {
       return new ActiveXObject("Msxml2.XMLHTTP.6.0");
-    } catch (e) {}
+    } catch (audio) {}
     try {
       return new ActiveXObject("Msxml2.XMLHTTP.3.0");
-    } catch (e) {}
+    } catch (audio) {}
     try {
       return new ActiveXObject("Msxml2.XMLHTTP");
-    } catch (e) {}
+    } catch (audio) {}
     try {
       return new ActiveXObject("Microsoft.XMLHTTP");
-    } catch (e) {}
+    } catch (audio) {}
     throw "The browser does not support HTTP request";
   },
 };
