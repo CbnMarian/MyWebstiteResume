@@ -1,12 +1,12 @@
 const button = document.getElementById("button-robot");
 const audioElement = document.getElementById("audio-robot");
 
-//disable/enable button
+// disable/enable button
 function toggleButton() {
   button.disabled = !button.disabled;
 }
 
-//passing the jokes to voice api
+// passing the jokes to voice api
 const tellJoke = (joke) => {
   VoiceRSS.speech({
     key: "e7621aace3b64f588463a898b9c2b3a2",
@@ -45,5 +45,3 @@ document.getElementById("button-robot").addEventListener("click", getJokes);
 
 // New console.log for debugging
 console.log("Jokes.js file loaded successfully!");
-
-// End of jokes.js

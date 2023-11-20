@@ -1,7 +1,7 @@
-//
 const VoiceRSS = {
   speech: function (e) {
-    this._validate(e), this._request(e);
+    this._validate(e);
+    this._request(e);
   },
   _validate: function (e) {
     if (!e) throw "The settings are undefined";
@@ -32,20 +32,31 @@ const VoiceRSS = {
   _request: function (e) {
     var a = this._buildRequest(e),
       t = this._getXHR();
-    (t.onreadystatechange = function () {
-      if (4 == t.readyState && 200 == t.status) {
-        if (0 == t.responseText.indexOf("ERROR")) throw t.responseText;
-
-        //new audio(t.respoinseText).play()
-        (audioElement.src = t.responseText), audioElement.play();
+    console.log("Before making API request");
+    t.onreadystatechange = function () {
+      if (4 == t.readyState) {
+        console.log("API Request State:", t.readyState);
+        if (200 == t.status) {
+          console.log("API Request Status:", t.status);
+          if (0 == t.responseText.indexOf("ERROR")) {
+            console.error("API Error:", t.responseText);
+            throw t.responseText;
+          }
+          console.log("API Response Text:", t.responseText);
+          //new audio(t.respoinseText).play()
+          (audioElement.src = t.responseText), audioElement.play();
+        } else {
+          console.error("Non-200 Status Code:", t.status);
+        }
       }
-    }),
-      t.open("POST", "https://api.voicerss.org/", !0),
-      t.setRequestHeader(
-        "Content-Type",
-        "application/x-www-form-urlencoded; charset=UTF-8",
-      ),
-      t.send(a);
+    };
+    t.open("POST", "https://api.voicerss.org/", !0);
+    t.setRequestHeader(
+      "Content-Type",
+      "application/x-www-form-urlencoded; charset=UTF-8",
+    );
+    t.send(a);
+    console.log("After making API request");
   },
   _buildRequest: function (e) {
     var a = e.c && "auto" != e.c.toLowerCase() ? e.c : this._detectCodec();
